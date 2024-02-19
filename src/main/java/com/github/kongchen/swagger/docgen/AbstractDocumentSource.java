@@ -211,6 +211,7 @@ public abstract class AbstractDocumentSource<D extends AbstractReader & ClassSwa
                 switch (output) {
                     case json:
                         ObjectWriter jsonWriter = mapper.writer(new DefaultPrettyPrinter());
+                        LOG.info("swagger:"+jsonWriter.writeValueAsString(swagger));
                         FileUtils.write(new File(dir, fileName + ".json"), jsonWriter.writeValueAsString(swagger), encoding);
                         break;
                     case yaml:
